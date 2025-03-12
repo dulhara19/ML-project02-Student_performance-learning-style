@@ -7,7 +7,9 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
 
-df = pd.read_csv("student_performance.csv")  # Update with your actual file name
+df = pd.read_csv("student_performance_large_dataset.csv")  # Update with your actual file name
 print(df.head())  # View first 5 rows 
 print(df.info())  # Check for missing values & data types  
 print(df.describe())  # Summary statistics
+
+
