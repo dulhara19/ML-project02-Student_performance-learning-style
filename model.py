@@ -12,4 +12,6 @@ print(df.head())  # View first 5 rows
 print(df.info())  # Check for missing values & data types  
 print(df.describe())  # Summary statistics
 
+print("====================missing values==============")
+print(df.isnull().sum())  # Count missing values in each column
 
