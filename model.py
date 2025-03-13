@@ -12,8 +12,8 @@ print(df.head())  # View first 5 rows
 print(df.info())  # Check for missing values & data types  
 print(df.describe())  # Summary statistics
 
-print("====================missing values==============")
-print(df.isnull().sum())  # Count missing values in each column
+# print("====================missing values==============")
+# print(df.isnull().sum())  # Count missing values in each column
 
 # encode the categorical features step by step 
 # i have already updated the csv file as df 
@@ -33,32 +33,76 @@ df = pd.get_dummies(df, columns=["Preferred_Learning_Style", "Self_Reported_Stre
 df["Final_Grade"] = label_encoder.fit_transform(df["Final_Grade"])
 
 # Show the 'Final_Grade' column
-print(df["Final_Grade"])
+# print(df["Final_Grade"])
 
 # again checking encoded data
-print(df.head())
+# print(df.head())
 
 # print all the cols in updated ds
-print(df.columns)
+print(df.columns)  # This will show the actual column names after encoding
+
 
 
 features = [
     "Age",
     "Gender",
     "Study_Hours_per_Week",
-    "Preferred_Learning_Style",
     "Online_Courses_Completed",
     "Participation_in_Discussions",
     "Assignment_Completion_Rate (%)",
     "Exam_Score (%)",
     "Attendance_Rate (%)",
     "Use_of_Educational_Tech",
-    "Self_Reported_Stress_Level",
     "Time_Spent_on_Social_Media (hours/week)",
-    "Sleep_Hours_per_Night"
+    "Sleep_Hours_per_Night",
+
+    # One-hot encoded learning style columns
+    "Preferred_Learning_Style_Kinesthetic",
+    "Preferred_Learning_Style_Reading/Writing",
+    "Preferred_Learning_Style_Visual",
+
+    # One-hot encoded stress level columns
+    "Self_Reported_Stress_Level_Low",
+    "Self_Reported_Stress_Level_Medium"
 ]
+
 
 X = df[features]  # Independent variables
 
 y = df["Final_Grade"]  # Dependent variable (exam performance)
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Print model coefficients
+print(f"Intercept (c): {model.intercept_}")
+print(f"Coefficients (m): {model.coef_}")
+
+# Creating a DataFrame for visualization
+coef_df = pd.DataFrame({"Feature": features, "Coefficient": model.coef_})
+
+# Sorting by absolute value of coefficient (important features on top)
+coef_df = coef_df.reindex(coef_df["Coefficient"].abs().sort_values(ascending=False).index)
+
+# Plot
+plt.figure(figsize=(10, 6))
+sns.barplot(x="Coefficient", y="Feature", data=coef_df, palette="coolwarm")
+plt.axvline(0, color="black", linewidth=1.2)  # Vertical line at 0 for reference
+plt.title("Feature Importance (Linear Regression Coefficients)", fontsize=14)
+plt.xlabel("Coefficient Value", fontsize=12)
+plt.ylabel("Features", fontsize=12)
+plt.show()
+
+# Loop through each feature and plot Final_Grade vs Feature
+for feature in features:
+    plt.figure(figsize=(6, 4))  # Set figure size for each plot
+    
+    sns.scatterplot(x=df[feature], y=df["Final_Grade"], alpha=0.5, color="blue")
+    
+    plt.xlabel(feature)
+    plt.ylabel("Final_Grade")
+    plt.title(f"Final Grade vs {feature}")
+    
+    plt.show()  # Show one plot at a time
