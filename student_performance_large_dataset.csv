@@ -1,6 +1,6 @@
 Student_ID,Age,Gender,Study_Hours_per_Week,Preferred_Learning_Style,Online_Courses_Completed,Participation_in_Discussions,Assignment_Completion_Rate (%),Exam_Score (%),Attendance_Rate (%),Use_of_Educational_Tech,Self_Reported_Stress_Level,Time_Spent_on_Social_Media (hours/week),Sleep_Hours_per_Night,Final_Grade
 S00001,18,Female,48,Kinesthetic,14,Yes,100,69,66,Yes,High,9,8,C
-S00002,29,Female,30,Reading/Writing,20,No,71,40,57,Yes,Medium,28,8,D
+S00002,29,Female,30,Reading/Writing,20,No,71,40,57,Yes,Medium,28,8,D 
 S00003,20,Female,47,Kinesthetic,11,No,60,43,79,Yes,Low,13,7,D
 S00004,23,Female,13,Auditory,0,Yes,63,70,60,Yes,Low,24,10,B
 S00005,19,Female,24,Auditory,19,Yes,59,63,93,Yes,Medium,26,8,C
