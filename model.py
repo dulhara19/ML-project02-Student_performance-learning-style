@@ -23,28 +23,42 @@ label_encoder = LabelEncoder()
 
 # Encode binary categorical variables
 df["Gender"] = label_encoder.fit_transform(df["Gender"])  # Female → 0, Male → 1
-df["Participation_in_Discussions"] = label_encoder.fit_transform(df["Participation_in_Discussions"])  # No → 0, Yes → 1
+df["Participation_in_Discussions"] = label_encoder.fit_transform(df["Participation_in_Discussions"])  # No → 0, Yes → 1++++++++++
 df["Use_of_Educational_Tech"] = label_encoder.fit_transform(df["Use_of_Educational_Tech"])  # No → 0, Yes → 1
 
 # One-hot encoding for multi-class categorical variables
 df = pd.get_dummies(df, columns=["Preferred_Learning_Style", "Self_Reported_Stress_Level"], drop_first=True)
+
 #Encoding the Target Variable (Final_Grade)
 df["Final_Grade"] = label_encoder.fit_transform(df["Final_Grade"])
+
+# Show the 'Final_Grade' column
+print(df["Final_Grade"])
 
 # again checking encoded data
 print(df.head())
 
-# features = [
-#     "Study_Hours_per_Week", 
-#     "Preferred_Learning_Style", 
-#     "Attendance_Rate (%)", 
-#     "Assignment_Completion_Rate (%)",
-#     "Self_Reported_Stress_Level", 
-#     "Time_Spent_on_Social_Media (hours/week)", 
-#     "Sleep_Hours_per_Night"
-# ]
+# print all the cols in updated ds
+print(df.columns)
 
-# X = df[features]  # Independent variables
 
-# y = df["Final_Grade"]  # Dependent variable (exam performance)
+features = [
+    "Age",
+    "Gender",
+    "Study_Hours_per_Week",
+    "Preferred_Learning_Style",
+    "Online_Courses_Completed",
+    "Participation_in_Discussions",
+    "Assignment_Completion_Rate (%)",
+    "Exam_Score (%)",
+    "Attendance_Rate (%)",
+    "Use_of_Educational_Tech",
+    "Self_Reported_Stress_Level",
+    "Time_Spent_on_Social_Media (hours/week)",
+    "Sleep_Hours_per_Night"
+]
+
+X = df[features]  # Independent variables
+
+y = df["Final_Grade"]  # Dependent variable (exam performance)
 
