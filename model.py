@@ -101,7 +101,7 @@ plt.show()
     
 #     sns.scatterplot(x=df[feature], y=df["Final_Grade"], alpha=0.5, color="blue")
     
-#     plt.xlabel(feature)
+#     plt.xlabel(feature) 
 #     plt.ylabel("Final_Grade")
 #     plt.title(f"Final Grade vs {feature}")
     
