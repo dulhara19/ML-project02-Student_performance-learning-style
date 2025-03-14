@@ -56,15 +56,16 @@ print(f"Mean Squared Error: {mse:.2f}")
 print(f"R² Score: {r2:.4f}")
 ```
 
-
 ## Conclusion
 
-This project successfully applies Linear Regression to analyze student performance, showing meaningful relationships between study habits, participation, and grades. Future improvements:
+This project successfully applies Linear Regression to analyze student performance, showing meaningful relationships between study habits, participation, and grades. 
 
-    Testing alternative models (Decision Trees, Random Forest)
-    Expanding feature selection with psychological & social factors
-    Applying feature scaling & polynomial regression for better performance
+Future improvements:
 
-📌 Author: Dulhara Lakshan
+**Testing alternative models (Decision Trees, Random Forest)**
+**Expanding feature selection with psychological & social factors**
+**Applying feature scaling & polynomial regression for better performance**
+
+**📌 Author: Dulhara Lakshan**
 📌 License: MIT
 📌 Contributions: Open to improvements! Feel free to fork, modify, and create pull requests.
