@@ -88,7 +88,7 @@ coef_df = coef_df.reindex(coef_df["Coefficient"].abs().sort_values(ascending=Fal
 
 # Plot
 plt.figure(figsize=(10, 6))
-sns.barplot(x="Coefficient", y="Feature", data=coef_df, palette="coolwarm")
+sns.barplot(x="Coefficient", y="Feature", hue="Feature", data=coef_df, palette="coolwarm", legend=False)
 plt.axvline(0, color="black", linewidth=1.2)  # Vertical line at 0 for reference
 plt.title("Feature Importance (Linear Regression Coefficients)", fontsize=14)
 plt.xlabel("Coefficient Value", fontsize=12)
