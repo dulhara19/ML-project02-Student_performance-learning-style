@@ -86,14 +86,6 @@ coef_df = pd.DataFrame({"Feature": features, "Coefficient": model.coef_})
 # Sorting by absolute value of coefficient (important features on top)
 coef_df = coef_df.reindex(coef_df["Coefficient"].abs().sort_values(ascending=False).index)
 
-# Plot
-plt.figure(figsize=(10, 6))
-sns.barplot(x="Coefficient", y="Feature", hue="Feature", data=coef_df, palette="coolwarm", legend=False)
-plt.axvline(0, color="black", linewidth=1.2)  # Vertical line at 0 for reference
-plt.title("Feature Importance (Linear Regression Coefficients)", fontsize=14)
-plt.xlabel("Coefficient Value", fontsize=12)
-plt.ylabel("Features", fontsize=12)
-plt.show()
 
 # # Loop through each feature and plot Final_Grade vs Feature
 # for feature in features:
@@ -145,6 +137,15 @@ r2 = r2_score(y_test, y_pred)
 
 print(f"Mean Squared Error: {mse:.2f}")
 print(f"R² Score: {r2:.4f}")
+
+# Plot
+plt.figure(figsize=(10, 6))
+sns.barplot(x="Coefficient", y="Feature", hue="Feature", data=coef_df, palette="coolwarm", legend=False)
+plt.axvline(0, color="black", linewidth=1.2)  # Vertical line at 0 for reference
+plt.title("Feature Importance (Linear Regression Coefficients)", fontsize=14)
+plt.xlabel("Coefficient Value", fontsize=12)
+plt.ylabel("Features", fontsize=12)
+plt.show()
 
 plt.scatter(y_test, y_pred, color='blue')
 plt.xlabel("Actual Scores")
