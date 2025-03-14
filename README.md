@@ -62,10 +62,10 @@ This project successfully applies Linear Regression to analyze student performan
 
 Future improvements:
 
-**Testing alternative models (Decision Trees, Random Forest)**
-**Expanding feature selection with psychological & social factors**
+**Testing alternative models (Decision Trees, Random Forest),**
+**Expanding feature selection with psychological & social factors,**
 **Applying feature scaling & polynomial regression for better performance**
 
 **📌 Author: Dulhara Lakshan**
-📌 License: MIT
-📌 Contributions: Open to improvements! Feel free to fork, modify, and create pull requests.
+**📌 License: MIT**
+**📌 Contributions: Open to improvements! Feel free to fork, modify, and create pull requests.**
