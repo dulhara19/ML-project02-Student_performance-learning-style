@@ -1,4 +1,4 @@
-﻿# 🎓 Student Performance Prediction using Linear Regression
+﻿# Student Performance Prediction using Linear Regression
 
 ## Introduction
 This project predicts student performance based on various academic, lifestyle, and psychological factors using **Linear Regression**. The model is trained on student data and predicts final grades based on multiple independent variables.
