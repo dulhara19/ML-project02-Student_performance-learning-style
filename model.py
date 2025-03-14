@@ -95,14 +95,59 @@ plt.xlabel("Coefficient Value", fontsize=12)
 plt.ylabel("Features", fontsize=12)
 plt.show()
 
-# Loop through each feature and plot Final_Grade vs Feature
-for feature in features:
-    plt.figure(figsize=(6, 4))  # Set figure size for each plot
+# # Loop through each feature and plot Final_Grade vs Feature
+# for feature in features:
+#     plt.figure(figsize=(6, 4))  # Set figure size for each plot
     
-    sns.scatterplot(x=df[feature], y=df["Final_Grade"], alpha=0.5, color="blue")
+#     sns.scatterplot(x=df[feature], y=df["Final_Grade"], alpha=0.5, color="blue")
     
-    plt.xlabel(feature)
-    plt.ylabel("Final_Grade")
-    plt.title(f"Final Grade vs {feature}")
+#     plt.xlabel(feature)
+#     plt.ylabel("Final_Grade")
+#     plt.title(f"Final Grade vs {feature}")
     
-    plt.show()  # Show one plot at a time
+#     plt.show()  # Show one plot at a time
+
+#======lets predict now========
+import numpy as np
+
+# Example student data (replace with actual values)
+new_student = np.array([[18,  # Age
+                         1,   # Gender (Male=1, Female=0)
+                         1,  # Study_Hours_per_Week
+                         0,  # Online_Courses_Completed
+                         1,   # Participation_in_Discussions (Yes=1, No=0)
+                         1,  # Assignment_Completion_Rate (%)
+                         20,  # Exam_Score (%)
+                         5,  # Attendance_Rate (%)
+                         0,   # Use_of_Educational_Tech (Yes=1, No=0)
+                         25,  # Time_Spent_on_Social_Media (hours/week)
+                         3,   # Sleep_Hours_per_Night
+                         0,   # Preferred_Learning_Style_Kinesthetic
+                         1,   # Preferred_Learning_Style_Reading/Writing
+                         0,   # Preferred_Learning_Style_Visual
+                         1,   # Self_Reported_Stress_Level_Low
+                         1]]) # Self_Reported_Stress_Level_Medium
+
+# Make sure it has the right shape (1 sample, many features)
+predicted_grade = model.predict(new_student)
+
+# Print the predicted grade
+print(f"Predicted Final Grade: {predicted_grade[0]}")
+
+y_pred = model.predict(X_test)
+
+# Compare Predictions vs Actual Scores
+df_results = pd.DataFrame({"Actual": y_test, "Predicted": y_pred})
+print(df_results.head())
+
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"Mean Squared Error: {mse:.2f}")
+print(f"R² Score: {r2:.4f}")
+
+plt.scatter(y_test, y_pred, color='blue')
+plt.xlabel("Actual Scores")
+plt.ylabel("Predicted Scores")
+plt.title("Actual vs Predicted Student Scores")
+plt.show()
